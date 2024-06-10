@@ -1,19 +1,16 @@
 class LettersController < ApplicationController
   before_action :set_letter, only: %i[ show update destroy ]
 
-  # GET /letters
   def index
-    @letters = Letter.all
+    @letters = Letter.where(status: true)
 
     render json: @letters
   end
 
-  # GET /letters/1
   def show
     render json: @letter
   end
 
-  # POST /letters
   def create
     @letter = Letter.new(letter_params)
 
@@ -24,7 +21,6 @@ class LettersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /letters/1
   def update
     if @letter.update(letter_params)
       render json: @letter
@@ -33,19 +29,17 @@ class LettersController < ApplicationController
     end
   end
 
-  # DELETE /letters/1
   def destroy
     @letter.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_letter
-      @letter = Letter.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def letter_params
-      params.require(:letter).permit(:sender, :reciever, :message, :status)
-    end
+  def set_letter
+    @letter = Letter.find(params[:id])
+  end
+
+  def letter_params
+    params.require(:letter).permit(:sender, :reciever, :message, :status)
+  end
 end
