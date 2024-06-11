@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row mx-2">
+    <div class="col-md-3">
+      <div class="mt-4">
+        <%= link_to "New letter", new_admin_letter_path, method: :get, class: "btn btn-primary mt-3" %>
+      </div>
+    </div>
+  </div>
+  <div class="row mx-2">
+    <div class="col-md-12">
+      <div class="mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Sender</th>
+              <th scope="col">Reciever</th>
+              <th scope="col">Message</th>
+              <th scope="col">Status</th>
+              <th scope="col">Public</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @letters.each do |letter| %>
+              <tr>
+                <td><%= letter.sender %></td>
+                <td><%= letter.reciever %></td>
+                <td><%= letter.message.truncate(50) %></td>
+                <td><%= letter.status.humanize %></td>
+                <td><%= letter.public ? 'Yes' : 'No' %></td>
+                <td>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <%= link_to "Edit", edit_admin_letter_path(letter), class: "btn btn-secondary btn-sm me-1" %>
+                    <%= button_to "Delete", admin_letter_path(letter), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+                  </div>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

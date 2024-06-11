@@ -4,7 +4,8 @@ class CreateLetters < ActiveRecord::Migration[7.0]
       t.string :sender, default: "Anônimo"
       t.string :reciever
       t.string :message
-      t.boolean :status, default: true
+      t.string :status, default: "pending"
+      t.boolean :public, default: true
 
       t.timestamps
     end

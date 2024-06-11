@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :letters
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root to: "letters#index"
+  namespace :admin do
+    resources :letters
+  end
+  resources :letters, only: [:index, :new, :create]
 end
