@@ -8,16 +8,19 @@
   </div>
   <div class="row mx-2">
     <div class="col-md-12">
-      <div class="mt-4">
-        <div class="list-group">
-          <% @letters.each do |letter| %>
-            <div class="list-group-item">
-              <h5 class="mb-1"><%= letter.sender %></h5>
-              <p class="mb-1"><strong>Para:</strong> <%= letter.reciever %></p>
-              <p class="mb-1"><%= letter.message.truncate(50) %></p>
+      <div class="mt-4 row d-flex flex-column align-items-center">
+        <% @letters.each_with_index do |letter, index| %>
+          <div class="<%= index == 0 ? "col-12" : "col-8" %>">
+            <div class="card w-100 d-flex flex-column rounded-4 p-4 mb-4">
+              <h6 class="mb-0">De:</h6>
+              <span class="mb-3"><%= letter.sender %></span>
+              <h6 class="mb-0">Para:</h6>
+              <span class="mb-3"><%= letter.reciever %></span>
+              <h6 class="mb-0">Mensagem:</h6>
+              <span><%= letter.message %></span>
             </div>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
