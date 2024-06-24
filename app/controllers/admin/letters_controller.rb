@@ -1,19 +1,13 @@
 class Admin::LettersController < ApplicationController
-  before_action :set_letter, only: %i[ show edit update destroy ]
+  before_action :get_items
 
-  def index
-    @letters = Letter.order(status: :desc)
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
-  def new
-    @letter = Letter.new
-  end
+  def new; end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @letter = Letter.new(letter_params)
@@ -36,8 +30,9 @@ class Admin::LettersController < ApplicationController
 
   private
 
-  def set_letter
-    @letter = Letter.find(params[:id])
+  def get_items
+    @letters = Letter.order(status: :desc)
+    @letter = Letter.find(params[:id]) rescue Letter.new
   end
 
   def letter_params

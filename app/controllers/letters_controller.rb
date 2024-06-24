@@ -4,15 +4,13 @@ class LettersController < ApplicationController
 
   def index; end
 
-  def new
-    @letter = Letter.new
-  end
+  def new; end
 
   def create
     @letter = Letter.new(letter_params)
-
     @letter.save
-    redirect_to letters_path
+    flash[:notice] = "Parabéns! Sua mensagem foi enviada. Assim que for aprovada, todos poderão vê-la :D"
+    redirect_to new_letter_path
   end
 
   private

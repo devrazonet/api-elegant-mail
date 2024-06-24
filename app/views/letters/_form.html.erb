@@ -1,4 +1,11 @@
-<div class="form-paper">
+ <div class="form-paper">
+
+  <div class="flash-messages">
+    <% flash.each do |key, value| %>
+      <div class="alert alert-success d-block flash <%= key %>"><%= value %></div>
+    <% end %>
+  </div>
+
   <%= form_with(model: @letter, url: letters_path, method: :post, local: true, html: { class: "needs-validation" }) do |form| %>
     <% if letter.errors.any? %>
       <div class="alert alert-danger">
