@@ -1,3 +1,182 @@
-<div class="container">
-  <%= render "form", letter: @letter %>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+html, body{
+  width:  100%;
+  height:  100%;
+}
+
+body{
+  background: #4F3F92;
+  font-family: "Playwrite AU SA", cursive;
+  overflow:hidden;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8px, -20px);
+  }
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+.logo{
+  left: 26px;
+  top: 26%;
+  width: 350px;
+}
+
+.container-fluid{
+  height:100vh;
+}
+.container-fluid:before{
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  width: 100%;
+  background: #3D2A8D;
+  z-index: -3;
+}
+
+.l-flag{ left: 0; animation: float_left 3s ease-in-out infinite; }
+.r-flag{ right: 0; animation: float_right 3s ease-in-out infinite; }
+.c-lamps{ left: calc(50% - 292px); animation: float 4s ease-in-out infinite; }
+
+.l-foods{ left: -80px; bottom: -25px; width: 480px; }
+.c-bonfire{ bottom: -50px; left: calc(50% - 116px);  }
+.r-foods{ right: -80px; bottom: -25px; width: 480px; }
+
+
+
+.fireworks{ position: absolute; }
+.fwb{
+  top: 25%;
+  right: 36px;
+  animation: fireworks 1.5s ease-in-out infinite;
+}
+
+.fw{
+  top: 62%;
+  right: 190px;
+  animation: fireworks 1.0s ease-in-out infinite;
+}
+
+.f2w{
+  top: 53%;
+  left: 180px;
+  animation: fireworks 1.2s ease-in-out infinite;
+}
+
+
+@keyframes float_left {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(-15px, -10px);
+  }
+
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+@keyframes float_right {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(15px, -10px);
+  }
+
+  100% {
+    transform: translate(0, 0)
+  }
+}
+
+@keyframes fireworks {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+.form-paper{
+  margin: 0 auto;
+  padding: 80px 120px 0 120px;
+  max-width: 1110px;
+  background: url("/src/letter.png") no-repeat center center;
+  background-size:cover;
+  min-height: 530px;
+}
+  .form-control{
+    border: 0px;
+    border-radius: 0;
+    font-size: 16px;
+    padding: 16px 12px;
+    color: #2C2353;
+    border-bottom: 2px solid #aaa;
+    background: none; 
+  }
+  .form-control:focus {
+    border-color: inherit; /* Mantém a cor da borda original */
+    box-shadow: none; /* Remove a sombra */
+    outline: none; /* Remove o contorno */
+    background-color: inherit; /* Mantém a cor de fundo original */
+}
+
+.btn-wood{
+  display: block; 
+  margin: 0 auto;
+  background: url("/src/wood_button.svg") no-repeat center center;
+  background-size: cover;
+  width:155px;
+  height:64px; 
+  color: #222;
+  font-weight: bold;
+}
+
+</style>
+
+<div class="container-fluid px-0 position-relative overflow-hidden pb-5">
+  <img src="/src/flags_left.svg" class="position-fixed top-0 l-flag" />
+  <img src="/src/lamps.svg" class="position-fixed c-lamps" />
+  <img src="/src/flags_right.svg" class="position-fixed top-0 r-flag" />
+
+  <img src="/src/logo.svg" class="position-fixed logo" />
+
+  <img src="/src/foods_left.svg" class="position-fixed l-foods" />
+  <img src="/src/bonfire.svg" class="position-fixed c-bonfire" />
+  <img src="/src/foods_right.svg" class="position-fixed r-foods" />
+
+  <img src="/src/fireworks.svg" class="fireworks fwb" />
+  <img src="/src/food_fireworks.svg" class="fireworks fw" />
+  <img src="/src/food_2_fireworks.svg" class="fireworks f2w" />
+
+  <div class="container pb-5" style="padding-top: 190px; position: relative; z-index: 5;">
+    <div class="row">
+      <div class="col-12">
+        <%= render "form", letter: @letter %>
+      </div>
+    </div>
+  </div>
 </div>

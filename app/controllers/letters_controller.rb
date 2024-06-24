@@ -1,9 +1,8 @@
 class LettersController < ApplicationController
   before_action :set_letter, only: %i[ show edit update destroy ]
+  before_action :get_items
 
-  def index
-    @letters = Letter.where(public: true, status: "approved")
-  end
+  def index; end
 
   def new
     @letter = Letter.new
@@ -18,9 +17,11 @@ class LettersController < ApplicationController
 
   private
 
-  # def set_letter
-  #   @letter = Letter.find(params[:id])
-  # end
+  def get_items
+    letters = Letter.where(public: true, status: "approved").order(created_at: :desc)
+    @letters = letters.limit(3)
+    @letter = letters.first
+  end
 
   def letter_params
     params.require(:letter).permit(:sender, :reciever, :message, :status, :public)
