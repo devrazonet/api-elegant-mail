@@ -22,6 +22,6 @@ class LettersController < ApplicationController
   end
 
   def letter_params
-    params.require(:letter).permit(:sender, :reciever, :message, :status, :public)
+    params.require(:letter).permit(:sender, :reciever, :message, :public).merge(status: "approved")
   end
 end
