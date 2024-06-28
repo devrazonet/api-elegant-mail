@@ -12,7 +12,7 @@ class Letter < ApplicationRecord
 
     FileUtils.mkdir_p(File.dirname(file_path))
 
-    data = { id: self.id, mensagem: " * ** Eiii, #{self.reciever}!!!, Tenho um recadinho procê! Corre la pra vê   :love_letter:" }
+    data = { id: self.id, mensagem: " * ** Eiii, #{self.reciever}!!!, Tenho um recadinho procê! Corre la pra vê   :love_letter: ** *" }
 
     File.write(file_path, JSON.pretty_generate(data))
   end
