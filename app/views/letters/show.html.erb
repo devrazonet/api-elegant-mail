@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mx-2">
+    <div class="col-md-12">
+      <div class="mt-4">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">De</th>
+              <th scope="col">Para</th>
+              <th scope="col">Mensagem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @letters.each do |letter| %>
+              <tr>
+                <td><%= letter.sender %></td>
+                <td><%= letter.reciever %></td>
+                <td><%= letter.message %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

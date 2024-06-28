@@ -7,12 +7,13 @@ class Letter < ApplicationRecord
   private
 
   def update_json
-    file_path = Rails.root.join('public', 'json', 'correio.json')
+    home_dir = Dir.home
+    file_path = Rails.root.join(home_dir, "Documentos", "correio_ap", "correio.json")
 
     FileUtils.mkdir_p(File.dirname(file_path))
 
-    data = { id: self.id, message: "Olá, #{self.reciever}, tenho uma nova mensagem para você." }
-    
+    data = { id: self.id, mensagem: " * ** Eiii, #{self.reciever}!!!, Tenho um recadinho procê! Corre la pra vê   :love_letter:" }
+
     File.write(file_path, JSON.pretty_generate(data))
   end
 end
